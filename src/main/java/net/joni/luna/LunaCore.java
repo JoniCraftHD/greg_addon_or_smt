@@ -9,6 +9,9 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.sound.SoundEntry;
 
+import net.joni.luna.common.data.materials.LunaMaterialFlags;
+import net.joni.luna.common.data.materials.LunaMaterials;
+import net.joni.luna.common.data.materials.LunaOres;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -22,6 +25,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
+
+
 @Mod(LunaCore.MOD_ID)
 @SuppressWarnings("removal")
 public class LunaCore {
@@ -31,6 +37,7 @@ public class LunaCore {
     public static GTRegistrate LUNA_REGISTRATE = GTRegistrate.create(LunaCore.MOD_ID);
 
     public LunaCore() {
+        init();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
@@ -50,6 +57,10 @@ public class LunaCore {
         MinecraftForge.EVENT_BUS.register(this);
 
         LUNA_REGISTRATE.registerRegistrate();
+    }
+    public static void init() {
+        REGISTRATE.registerRegistrate();
+        LunaMaterialFlags.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -91,7 +102,8 @@ public class LunaCore {
      * @param event
      */
     private void addMaterials(MaterialEvent event) {
-        // CustomMaterials.init();
+        LunaMaterials.register();
+        LunaOres.register();
     }
 
     /**

@@ -4,6 +4,7 @@ import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 
+import net.joni.luna.common.data.materials.LunaElements;
 import net.minecraft.data.recipes.FinishedRecipe;
 
 import java.util.function.Consumer;
@@ -37,7 +38,7 @@ public class LunaGTAddon implements IGTAddon {
 
     @Override
     public void registerElements() {
-        // CustomElements.init();
+        LunaElements.init();
     }
 
     // If you have custom ingredient types, uncomment this & change to match your capability.
