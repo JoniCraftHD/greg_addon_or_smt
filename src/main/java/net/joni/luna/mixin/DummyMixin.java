@@ -1,4 +1,4 @@
-package com.example.examplemod.mixin;
+package net.joni.luna.mixin;
 
 import net.minecraft.world.level.levelgen.WorldgenRandom;
 
