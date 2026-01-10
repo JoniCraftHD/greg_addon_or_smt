@@ -17,6 +17,9 @@ public class LunaMaterialFlags {
     public static final MaterialFlag GENERATE_CRYSTAL_ROSE = new MaterialFlag.Builder("generate_crystal_rose")
             .requireProps(PropertyKey.DUST)
             .build();
+    public static final MaterialFlag GENERATE_FILE_HEAD = new MaterialFlag.Builder("generate_file_head")
+            .requireProps(PropertyKey.INGOT)
+            .build();
 
     public static final TagPrefix nanites = new TagPrefix("nanites")
             .idPattern("%s_nanites")
@@ -39,6 +42,16 @@ public class LunaMaterialFlags {
             .generateItem(true)
             .materialIconType(LunaMaterialSet.crystal_rose)
             .generationCondition(mat -> mat.hasFlag(LunaMaterialFlags.GENERATE_CRYSTAL_ROSE));
+    public static final TagPrefix file_head = new TagPrefix("file_head")
+            .idPattern("%s_file_head")
+            .defaultTagPath("file_heads/%s")
+            .unformattedTagPath("file_head")
+            .langValue("%s File Head")
+            .materialAmount(GTValues.M / 4)
+            .unificationEnabled(true)
+            .generateItem(true)
+            .materialIconType(LunaMaterialSet.file_head)
+            .generationCondition(mat -> mat.hasFlag(LunaMaterialFlags.GENERATE_FILE_HEAD));
 
     public static void init() {}
 }

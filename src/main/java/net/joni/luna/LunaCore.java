@@ -24,6 +24,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import slimeknights.tconstruct.common.TinkerModule;
+import slimeknights.tconstruct.library.tools.SlotType;
+import slimeknights.tconstruct.library.utils.BlockSideHitListener;
 
 import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
 
@@ -143,5 +146,6 @@ public class LunaCore {
      */
     public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation, SoundEntry> event) {
         // CustomSounds.init();
+
     }
 }

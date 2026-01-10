@@ -30,6 +30,7 @@ public class LunaMaterials {
     public static Material SUGAR_WATER;
     public static Material WAX_MELTING_CATALYST;
     public static Material CRYO_GRAPHITE_BINDING_SOLUTION;
+    public static Material TEST_ALLOY;
 
     public static void register() {
         SUGAR_WATER = new Material.Builder(
@@ -147,6 +148,23 @@ public class LunaMaterials {
                 .secondaryColor(0x7090A0)
                 .iconSet(MaterialIconSet.DULL)
                 .buildAndRegister();
-    }
+        TEST_ALLOY = new Material.Builder(
+                LunaCore.id("test_alloy"))
+                .flags(MaterialFlags.GENERATE_PLATE, MaterialFlags.GENERATE_FRAME, MaterialFlags.GENERATE_FOIL, LunaMaterialFlags.GENERATE_FILE_HEAD)
+                .fluid()
+                .ore()
+                .ingot()
+                .color(0x1e4572)
+                .secondaryColor(0x00967e)
+                .iconSet(LunaMaterialSet.TEST)
+                .buildAndRegister();
 
-}
+    } public static void modifyMaterials() {
+        for (Material material : GTCEuAPI.materialManager.getRegisteredMaterials()) {
+            ToolProperty toolProperty = material.getProperty(PropertyKey.TOOL);
+
+            if (toolProperty != null && toolProperty.hasType(GTToolType.FILE)) {
+                material.addFlags(LunaMaterialFlags.GENERATE_FILE_HEAD);
+            }
+        }}}
+
