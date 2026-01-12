@@ -6,11 +6,15 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 
 import net.joni.luna.common.data.materials.LunaElements;
+import net.joni.luna.common.data.materials.LunaItems;
 import net.joni.luna.common.data.materials.LunaMaterials;
+import net.joni.luna.common.registry.LunaRegistration;
 import net.minecraft.data.recipes.FinishedRecipe;
-import slimeknights.tconstruct.common.TinkerModule;
-import slimeknights.tconstruct.library.tools.SlotType;
-import slimeknights.tconstruct.library.utils.BlockSideHitListener;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
 
 import java.util.function.Consumer;
 
@@ -20,7 +24,7 @@ public class LunaGTAddon implements IGTAddon {
 
     @Override
     public GTRegistrate getRegistrate() {
-        return LunaCore.LUNA_REGISTRATE;
+        return LunaRegistration.REGISTRATE;
     }
 
     @Override
@@ -49,8 +53,27 @@ public class LunaGTAddon implements IGTAddon {
         LunaMaterials.modifyMaterials();
     }
 
-            // If you have custom ingredient types, uncomment this & change to match your capability.
-            // KubeJS WILL REMOVE YOUR RECIPES IF THESE ARE NOT REGISTERED.
+    @Mod("mod_id")
+    public class ModId {
+
+        public static final String MOD_ID = "luna";
+
+        public ModId() {
+            IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+            // Initialize your items
+            LunaItems.init();
+
+            modEventBus.addListener(this::commonSetup);
+        }
+
+        private void commonSetup(FMLCommonSetupEvent event) {
+            // Additional configuration if necessary
+        }
+    }
+
+
+    // KubeJS WILL REMOVE YOUR RECIPES IF THESE ARE NOT REGISTERED.
             /*
              * public static final ContentJS<Double> PRESSURE_IN = new ContentJS<>(NumberComponent.ANY_DOUBLE,
              * CustomRecipeCapabilities.PRESSURE, false);

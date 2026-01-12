@@ -12,7 +12,6 @@ import com.gregtechceu.gtceu.api.item.tool.GTToolType;
 import net.joni.luna.LunaCore;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.MID;
-import static com.gregtechceu.gtceu.common.data.GTMaterials.*;
 
 public class LunaMaterials {
 
@@ -159,12 +158,16 @@ public class LunaMaterials {
                 .iconSet(LunaMaterialSet.TEST)
                 .buildAndRegister();
 
-    } public static void modifyMaterials() {
+    }
+
+    public static void modifyMaterials(){
         for (Material material : GTCEuAPI.materialManager.getRegisteredMaterials()) {
             ToolProperty toolProperty = material.getProperty(PropertyKey.TOOL);
 
             if (toolProperty != null && toolProperty.hasType(GTToolType.FILE)) {
                 material.addFlags(LunaMaterialFlags.GENERATE_FILE_HEAD);
             }
-        }}}
+        }}
+
+}
 

@@ -6,7 +6,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEv
 import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
-import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
+// ❌ ELIMINADO: import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.sound.SoundEntry;
 
 import net.joni.luna.common.data.materials.LunaMaterialFlags;
@@ -24,128 +24,128 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import slimeknights.tconstruct.common.TinkerModule;
-import slimeknights.tconstruct.library.tools.SlotType;
-import slimeknights.tconstruct.library.utils.BlockSideHitListener;
+// import slimeknights.tconstruct.common.TinkerModule;
+// import slimeknights.tconstruct.library.tools.SlotType;
+// import slimeknights.tconstruct.library.utils.BlockSideHitListener;
 
 import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
 
 
-@Mod(LunaCore.MOD_ID)
-@SuppressWarnings("removal")
-public class LunaCore {
+                @Mod(LunaCore.MOD_ID)
+                @SuppressWarnings("removal")
+                public class LunaCore {
 
-    public static final String MOD_ID = "luna";
-    public static final Logger LOGGER = LogManager.getLogger();
-    public static GTRegistrate LUNA_REGISTRATE = GTRegistrate.create(LunaCore.MOD_ID);
+                    public static final String MOD_ID = "luna";
+                    public static final Logger LOGGER = LogManager.getLogger();
+                    // Eliminated: public static GTRegistrate LUNA_REGISTRATE = GTRegistrate.create(LunaCore.MOD_ID);
 
-    public LunaCore() {
-        init();
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+                    public LunaCore() {
+                        init();
+                        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::clientSetup);
+                        modEventBus.addListener(this::commonSetup);
+                        modEventBus.addListener(this::clientSetup);
 
-        modEventBus.addListener(this::addMaterialRegistries);
-        modEventBus.addListener(this::addMaterials);
-        modEventBus.addListener(this::modifyMaterials);
+                        modEventBus.addListener(this::addMaterialRegistries);
+                        modEventBus.addListener(this::addMaterials);
+                        modEventBus.addListener(this::modifyMaterials);
 
-        modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
-        modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
-        modEventBus.addGenericListener(SoundEntry.class, this::registerSounds);
+                        modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
+                        modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
+                        modEventBus.addGenericListener(SoundEntry.class, this::registerSounds);
 
-        // Most other events are fired on Forge's bus.
-        // If we want to use annotations to register event listeners,
-        // we need to register our object like this!
-        MinecraftForge.EVENT_BUS.register(this);
+                        // Most other events are fired on Forge's bus.
+                        // If we want to use annotations to register event listeners,
+                        // we need to register our object like this!
+                        MinecraftForge.EVENT_BUS.register(this);
 
-        LUNA_REGISTRATE.registerRegistrate();
-    }
-    public static void init() {
-        REGISTRATE.registerRegistrate();
-        LunaMaterialFlags.init();
-    }
+                        // Eliminated: LUNA_REGISTRATE.registerRegistrate();
+                    }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            LOGGER.info("Hello from common setup! This is *after* registries are done, so we can do this:");
-            LOGGER.info("Look, I found a {}!", Items.DIAMOND);
-        });
-    }
+                    public static void init() {
+                        REGISTRATE.registerRegistrate();
+                        LunaMaterialFlags.init();
+                    }
 
-    private void clientSetup(final FMLClientSetupEvent event) {
-        LOGGER.info("Hey, we're on Minecraft version {}!", Minecraft.getInstance().getLaunchedVersion());
-    }
+                    private void commonSetup(final FMLCommonSetupEvent event) {
+                        event.enqueueWork(() -> {
+                            LOGGER.info("Hello from common setup! This is *after* registries are done, so we can do this:");
+                            LOGGER.info("Look, I found a {}!", Items.DIAMOND);
+                        });
+                    }
 
-    /**
-     * Create a ResourceLocation in the format "modid:path"
-     *
-     * @param path
-     * @return ResourceLocation with the namespace of your mod
-     */
-    public static ResourceLocation id(String path) {
-        return new ResourceLocation(MOD_ID, path);
-    }
+                    private void clientSetup(final FMLClientSetupEvent event) {
+                        LOGGER.info("Hey, we're on Minecraft version {}!", Minecraft.getInstance().getLaunchedVersion());
+                    }
 
-    /**
-     * Create a material manager for your mod using GT's API.
-     * You MUST have this if you have custom materials.
-     * Remember to register them not to GT's namespace, but your own.
-     * 
-     * @param event
-     */
-    private void addMaterialRegistries(MaterialRegistryEvent event) {
-        GTCEuAPI.materialManager.createRegistry(LunaCore.MOD_ID);
-    }
+                    /**
+                     * Create a ResourceLocation in the format "modid:path"
+                     *
+                     * @param path
+                     * @return ResourceLocation with the namespace of your mod
+                     */
+                    public static ResourceLocation id(String path) {
+                        return new ResourceLocation(MOD_ID, path);
+                    }
 
-    /**
-     * You will also need this for registering custom materials
-     * Call init() from your Material class(es) here
-     * 
-     * @param event
-     */
-    private void addMaterials(MaterialEvent event) {
-        LunaMaterials.register();
-        LunaOres.register();
-    }
+                    /**
+                     * Create a material manager for your mod using GT's API.
+                     * You MUST have this if you have custom materials.
+                     * Remember to register them not to GT's namespace, but your own.
+                     *
+                     * @param event
+                     */
+                    private void addMaterialRegistries(MaterialRegistryEvent event) {
+                        GTCEuAPI.materialManager.createRegistry(LunaCore.MOD_ID);
+                    }
 
-    /**
-     * (Optional) Used to modify pre-existing materials from GregTech
-     * 
-     * @param event
-     */
-    private void modifyMaterials(PostMaterialEvent event) {
-        // CustomMaterials.modify();
-    }
+                    /**
+                     * You will also need this for registering custom materials
+                     * Call init() from your Material class(es) here
+                     *
+                     * @param event
+                     */
+                    private void addMaterials(MaterialEvent event) {
+                        LunaMaterials.register();
+                        LunaOres.register();
+                    }
 
-    /**
-     * Used to register your own new RecipeTypes.
-     * Call init() from your RecipeType class(es) here
-     * 
-     * @param event
-     */
-    private void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
-        // CustomRecipeTypes.init();
-    }
+                    /**
+                     * (Optional) Used to modify pre-existing materials from GregTech
+                     *
+                     * @param event
+                     */
+                    private void modifyMaterials(PostMaterialEvent event) {
+                        // CustomMaterials.modify();
+                    }
 
-    /**
-     * Used to register your own new machines.
-     * Call init() from your Machine class(es) here
-     * 
-     * @param event
-     */
-    private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
-        // CustomMachines.init();
-    }
+                    /**
+                     * Used to register your own new RecipeTypes.
+                     * Call init() from your RecipeType class(es) here
+                     *
+                     * @param event
+                     */
+                    private void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
+                        // CustomRecipeTypes.init();
+                    }
 
-    /**
-     * Used to register your own new sounds
-     * Call init from your Sound class(es) here
-     * 
-     * @param event
-     */
-    public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation, SoundEntry> event) {
-        // CustomSounds.init();
+                    /**
+                     * Used to register your own new machines.
+                     * Call init() from your Machine class(es) here
+                     *
+                     * @param event
+                     */
+                    private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
+                        // CustomMachines.init();
+                    }
 
-    }
-}
+                    /**
+                     * Used to register your own new sounds
+                     * Call init from your Sound class(es) here
+                     *
+                     * @param event
+                     */
+                    public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation, SoundEntry> event) {
+                        // CustomSounds.init();
+                    }
+                }
