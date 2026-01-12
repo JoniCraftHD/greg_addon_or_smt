@@ -9,11 +9,15 @@ import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 // ❌ ELIMINADO: import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.sound.SoundEntry;
 
+import com.gregtechceu.gtceu.common.data.GTCreativeModeTabs;
+import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.joni.luna.common.data.materials.LunaMaterialFlags;
 import net.joni.luna.common.data.materials.LunaMaterials;
 import net.joni.luna.common.data.materials.LunaOres;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+//import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -28,6 +32,9 @@ import org.apache.logging.log4j.Logger;
 // import slimeknights.tconstruct.library.tools.SlotType;
 // import slimeknights.tconstruct.library.utils.BlockSideHitListener;
 
+import java.util.function.Supplier;
+
+import static net.joni.luna.common.data.materials.LunaItems.ModItems.ITEMS;
 import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
 
 
@@ -148,4 +155,16 @@ import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
                     public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation, SoundEntry> event) {
                         // CustomSounds.init();
                     }
+                    public static RegistryEntry<CreativeModeTab> LunaCreativeTab = REGISTRATE
+                            .defaultCreativeTab(LunaCore.MOD_ID,
+                                    builder -> builder
+                                            .displayItems(new GTCreativeModeTabs.RegistrateDisplayItemsGenerator(LunaCore.MOD_ID,
+                                                    REGISTRATE))
+                                            .title(REGISTRATE.addLang("itemGroup", LunaCore.id("creative_tab"),
+                                                    "PhoenixCore (CoreMod)"))
+                                            .icon(LunaMaterials.TEST_ALLOY::asStack)
+                                            .build())
+                            .register();
+                     ITEMS.register(modEventus);
+
                 }
