@@ -53,7 +53,7 @@ public class LunaGTAddon implements IGTAddon {
         LunaMaterials.modifyMaterials();
     }
 
-    @Mod("mod_id")
+    @Mod("luna")
     public class ModId {
 
         public static final String MOD_ID = "luna";
