@@ -71,6 +71,14 @@ repositories {
         name 'DVS1 Maven FS'
         url 'https://dvs1.progwml6.com/files/maven'
     }
+    maven {
+        name = 'GeckoLib'
+        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content {
+            includeGroupByRegex("software\\.bernie.*")
+            includeGroup("com.eliotlash.mclib")
+        }
+    }
 
 
 }
@@ -161,6 +169,8 @@ dependencies {
     modImplementation("dev.toma.configuration:configuration-forge-${minecraft_version}:${configuration_version}")
     modImplementation("curse.maven:tinkers-construct-74072:7419961")
     modImplementation("curse.maven:mantle-74924:7414488")
+    modImplementation("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
+    modImplementation("com.eliotlash.mclib:mclib:20")
 
 
     // lombok

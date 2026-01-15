@@ -1,56 +1,35 @@
 package net.joni.luna.common.data.materials;
 
-
-
-
-import com.gregtechceu.gtceu.GTCEu;
-import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
+import com.gregtechceu.gtceu.api.item.ComponentItem;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.joni.luna.LunaCore;
-import net.joni.luna.common.registry.LunaRegistration;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
 
-
-
 public class LunaItems {
 
-
-    private static final GTRegistrate REGISTRATE = LunaRegistration.REGISTRATE;
-
-    // Registering a single item
     public static final ItemEntry<Item> MI_ITEM = REGISTRATE
             .item("mi_item", Item::new)
+            .lang("Mi Item")
             .register();
 
-    // Item with custom properties
     public static final ItemEntry<Item> MI_ITEM_CUSTOM = REGISTRATE
-            .item("mi_item_custom", properties -> new Item(properties.stacksTo(16)))
+            .item("mi_item_custom", Item::new)
+            .properties(p -> p.stacksTo(16))
+            .lang("Mi Item Custom")
             .register();
 
-    // Method to initialize (call from your main class)
+    public static final ItemEntry<MoonDustItem> RAW_MOON_DUST = REGISTRATE
+            .item("raw_moon_dust", MoonDustItem::new) // <--- Verweist jetzt auf deine neue Klasse
+            .lang("Raw Moon Dust")
+            .register();
 
-        public static void init() {
-            REGISTRATE.registerRegistrate();
-            LunaMaterialFlags.init();
-        // This method only needs to be called to force the class to load
-    }
-    public class ModItems {
-        public static final DeferredRegister<Item> ITEMS =
-                DeferredRegister.create(ForgeRegistries.ITEMS, LunaCore.MOD_ID);
+    public static final ItemEntry<ComponentItem> MOON_INGOT = REGISTRATE
+            .item("moon_ingot", ComponentItem::create)
+            .lang("Moon Ingot")
+            .register();
 
-        public static final RegistryObject<Item> RAW_MOON_DUST =
-                ITEMS.register("true", () -> new Item(new Item.Properties()));
-
-        public static void register(IEventBus bus) {
-            ITEMS.register(bus);
-        }
+    public static void init() {
     }
 }
-
 
