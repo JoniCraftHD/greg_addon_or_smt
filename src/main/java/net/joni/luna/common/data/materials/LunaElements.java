@@ -4,6 +4,8 @@ import com.gregtechceu.gtceu.api.data.chemical.Element;
 import com.gregtechceu.gtceu.api.registry.GTRegistries;
 
 public class LunaElements {
+    public static final Element AE = createAndRegister(22, 60, -1, null, "aeric_alloy", "AE", false);
+
 
     public static final Element APNS = createAndRegister(35, 450, -1, null, "Almost Pure Nevvonian Steel", "", false);
 

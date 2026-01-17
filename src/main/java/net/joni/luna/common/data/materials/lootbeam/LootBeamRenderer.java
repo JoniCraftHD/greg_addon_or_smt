@@ -1,4 +1,4 @@
-package net.joni.luna.common.data.materials;
+package net.joni.luna.common.data.materials.lootbeam;
 
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;

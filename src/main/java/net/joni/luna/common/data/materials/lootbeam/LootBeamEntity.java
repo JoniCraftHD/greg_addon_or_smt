@@ -1,9 +1,11 @@
-package net.joni.luna.common.data.materials;
+package net.joni.luna.common.data.materials.lootbeam;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+
 import net.minecraft.world.level.Level;
+
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.AnimatableManager;
@@ -18,12 +20,15 @@ public class LootBeamEntity extends Entity implements GeoEntity {
         super(type, level);
     }
 
-    // Hier definierst du, welche Animation abgespielt werden soll
+
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
         controllers.add(new AnimationController<>(this, "controller", 0, state -> {
             // "animation.lootbeam.deploy" ist der Name aus deiner .animation.json
-            return state.setAndContinue(RawAnimation.begin().thenPlay("animation.lootbeam.deploy"));
+
+
+            return state.setAndContinue(RawAnimation.begin().thenPlay("loot beam"));
+
         }));
     }
 
@@ -32,8 +37,12 @@ public class LootBeamEntity extends Entity implements GeoEntity {
         return this.cache;
     }
 
-    // Wichtig: Entities brauchen diese Methoden, sonst gibt es Fehler
+
     @Override protected void defineSynchedData() {}
     @Override protected void readAdditionalSaveData(CompoundTag nbt) {}
     @Override protected void addAdditionalSaveData(CompoundTag nbt) {}
+
+
+
+
 }

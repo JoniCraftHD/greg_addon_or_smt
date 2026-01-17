@@ -1,4 +1,4 @@
-package net.joni.luna.common.data.materials;
+package net.joni.luna.common.data.materials.lootbeam;
 
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
@@ -19,6 +19,6 @@ public class LootBeamModel extends GeoModel<LootBeamEntity> {
     @Override
     public ResourceLocation getAnimationResource(LootBeamEntity animatable) {
         // Pfad zur .animation.json
-        return new ResourceLocation("luna", "animations/lootbeam.animation.json");
+        return new ResourceLocation("luna", "animations/model.animation.json");
     }
 }

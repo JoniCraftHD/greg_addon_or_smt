@@ -8,10 +8,9 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.gregtechceu.gtceu.api.sound.SoundEntry;
 
-import com.tterrag.registrate.Registrate;
-
 import net.joni.luna.common.data.materials.*;
 
+import net.joni.luna.common.data.materials.lootbeam.LootBeamEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -59,7 +58,9 @@ public class LunaCore {
     public static void init() {
         REGISTRATE.registerRegistrate();
         LunaMaterialFlags.init();
-        LunaItems.init(); // Initialize your items
+        LunaItems.init();
+        LunaEntities.init();
+        // Initialize your items
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -87,7 +88,7 @@ public class LunaCore {
     }
 
     private void modifyMaterials(PostMaterialEvent event) {
-        // CustomMaterials.modify();
+        LunaMaterials.modifyMaterials();
     }
 
     private void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
@@ -101,4 +102,8 @@ public class LunaCore {
     public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation, SoundEntry> event) {
         // CustomSounds.init();
     }
+
+
+
+
 }

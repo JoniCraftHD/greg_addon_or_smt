@@ -2,8 +2,9 @@ package net.joni.luna.common.data.materials;
 
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.EntityEntry;
+import net.joni.luna.common.data.materials.lootbeam.LootBeamEntity;
+import net.joni.luna.common.data.materials.lootbeam.LootBeamRenderer;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.EntityType;
 
 public class LunaEntities {
 
@@ -17,5 +18,8 @@ public class LunaEntities {
 
     public static void register() {
         // Diese Methode rufen wir in der Hauptklasse auf, damit die Registrierung startet
+
+    }
+    public static void init() {
     }
 }

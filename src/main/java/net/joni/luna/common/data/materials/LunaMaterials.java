@@ -3,6 +3,7 @@ package net.joni.luna.common.data.materials;
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
+import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
@@ -10,6 +11,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
 import net.joni.luna.LunaCore;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.MID;
 
@@ -30,6 +32,7 @@ public class LunaMaterials {
     public static Material WAX_MELTING_CATALYST;
     public static Material CRYO_GRAPHITE_BINDING_SOLUTION;
     public static Material TEST_ALLOY;
+    public static Material AERIC_ALLOY;
 
     public static void register() {
         SUGAR_WATER = new Material.Builder(
@@ -157,17 +160,21 @@ public class LunaMaterials {
                 .secondaryColor(0x00967e)
                 .iconSet(LunaMaterialSet.TEST)
                 .buildAndRegister();
+        AERIC_ALLOY = new Material.Builder(
+                LunaCore.id("aeric_alloy"))
+                .flags(MaterialFlags.GENERATE_PLATE)
+                .fluid()
+                .ingot()
+                .color(0xa95629)
+                .iconSet(MaterialIconSet.SHINY)
+                .element(LunaElements.AE).formula("Ae")
+                .buildAndRegister();
 
     }
 
-    public static void modifyMaterials(){
-        for (Material material : GTCEuAPI.materialManager.getRegisteredMaterials()) {
-            ToolProperty toolProperty = material.getProperty(PropertyKey.TOOL);
 
-            if (toolProperty != null && toolProperty.hasType(GTToolType.FILE)) {
-                material.addFlags(LunaMaterialFlags.GENERATE_FILE_HEAD);
-            }
-        }}
+    public static void modifyMaterials() {
+    }
 
 }
 
