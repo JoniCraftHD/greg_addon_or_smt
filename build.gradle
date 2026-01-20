@@ -171,6 +171,7 @@ dependencies {
     modImplementation("curse.maven:mantle-74924:7414488")
     modImplementation("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
     modImplementation("com.eliotlash.mclib:mclib:20")
+    modImplementation("curse.maven:strange-matter-1344073:7342906")
 
 
     // lombok

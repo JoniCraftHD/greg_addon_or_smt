@@ -6,6 +6,7 @@ import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEv
 import com.gregtechceu.gtceu.api.data.chemical.material.event.PostMaterialEvent;
 import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
+import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.sound.SoundEntry;
 
 import net.joni.luna.common.data.materials.*;
@@ -32,6 +33,7 @@ public class LunaCore {
 
     public static final String MOD_ID = "luna";
     public static final Logger LOGGER = LogManager.getLogger();
+    public static GTRegistrate LUNA_REGISTRATE = GTRegistrate.create(MOD_ID);
 
 
 
@@ -53,7 +55,9 @@ public class LunaCore {
         modEventBus.addGenericListener(SoundEntry.class, this::registerSounds);
 
         MinecraftForge.EVENT_BUS.register(this);
+
     }
+
 
     public static void init() {
         REGISTRATE.registerRegistrate();
