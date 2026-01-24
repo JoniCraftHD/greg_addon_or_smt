@@ -1,9 +1,11 @@
 package net.joni.luna.common.data.materials.lootbeam;
 
 import net.minecraft.resources.ResourceLocation;
+
 import software.bernie.geckolib.model.GeoModel;
 
 public class LootBeamModel extends GeoModel<LootBeamEntity> {
+
     @Override
     public ResourceLocation getModelResource(LootBeamEntity animatable) {
         // Pfad zur .geo.json

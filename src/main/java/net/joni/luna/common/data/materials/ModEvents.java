@@ -3,7 +3,6 @@ package net.joni.luna.common.data.materials;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.EntityLeaveLevelEvent;
@@ -30,15 +29,13 @@ public class ModEvents {
                         ItemEntity itemEntity = new ItemEntity(
                                 level,
                                 pos.getX(), pos.getY() + 0.5, pos.getZ(),
-                                stackToDrop
-                        );
+                                stackToDrop);
 
                         // Ein bisschen "Schwung" hinzufügen, damit es cooler aussieht
                         itemEntity.setDeltaMovement(
                                 random.nextGaussian() * 0.05,
                                 0.2,
-                                random.nextGaussian() * 0.05
-                        );
+                                random.nextGaussian() * 0.05);
 
                         level.addFreshEntity(itemEntity);
                     }

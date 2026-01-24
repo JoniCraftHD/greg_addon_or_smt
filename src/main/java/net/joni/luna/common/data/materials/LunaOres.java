@@ -3,8 +3,8 @@ package net.joni.luna.common.data.materials;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
-import net.joni.luna.LunaCore;
 
+import net.joni.luna.LunaCore;
 
 public class LunaOres {
 

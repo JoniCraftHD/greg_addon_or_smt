@@ -14,6 +14,4 @@ public class ClientModEvents {
         // Hier wird deine Entity mit dem LootBeamRenderer verknüpft
         event.registerEntityRenderer(LunaEntities.LOOT_BEAM.get(), LootBeamRenderer::new);
     }
-
-
-    }
+}

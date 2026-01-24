@@ -10,8 +10,6 @@ import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 import com.gregtechceu.gtceu.api.sound.SoundEntry;
 
 import net.joni.luna.common.data.materials.*;
-
-import net.joni.luna.common.data.materials.lootbeam.LootBeamEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -25,8 +23,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
-
 @Mod(LunaCore.MOD_ID)
 @SuppressWarnings("removal")
 public class LunaCore {
@@ -34,10 +30,6 @@ public class LunaCore {
     public static final String MOD_ID = "luna";
     public static final Logger LOGGER = LogManager.getLogger();
     public static GTRegistrate LUNA_REGISTRATE = GTRegistrate.create(MOD_ID);
-
-
-
-    
 
     public LunaCore() {
         init();
@@ -58,12 +50,13 @@ public class LunaCore {
 
     }
 
-
     public static void init() {
-        REGISTRATE.registerRegistrate();
+        // REGISTRATE.registerRegistrate();
+
         LunaMaterialFlags.init();
         LunaItems.init();
         LunaEntities.init();
+        LunaBlocks.init();
         // Initialize your items
     }
 
@@ -96,18 +89,16 @@ public class LunaCore {
     }
 
     private void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
+        LunaRecipeTypes.init();
         // CustomRecipeTypes.init();
     }
 
     private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
+        LunaMultiblocks.init();
         // CustomMachines.init();
     }
 
     public void registerSounds(GTCEuAPI.RegisterEvent<ResourceLocation, SoundEntry> event) {
         // CustomSounds.init();
     }
-
-
-
-
 }

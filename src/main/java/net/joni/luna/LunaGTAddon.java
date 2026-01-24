@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 
 import net.joni.luna.common.data.materials.LunaElements;
 import net.joni.luna.common.data.materials.LunaItems;
+import net.joni.luna.common.data.materials.LunaMachineRecipes;
 import net.joni.luna.common.data.materials.LunaMaterials;
 import net.joni.luna.common.registry.LunaRegistration;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -14,7 +15,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-
 
 import java.util.function.Consumer;
 
@@ -42,6 +42,7 @@ public class LunaGTAddon implements IGTAddon {
 
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
+        LunaMachineRecipes.init(provider);
         // CustomRecipes.init(provider);
     }
 
@@ -49,6 +50,7 @@ public class LunaGTAddon implements IGTAddon {
     public void registerElements() {
         LunaElements.init();
     }
+
     private void modifyMaterials(PostMaterialEvent event) {
         LunaMaterials.modifyMaterials();
     }
@@ -72,17 +74,16 @@ public class LunaGTAddon implements IGTAddon {
         }
     }
 
-
     // KubeJS WILL REMOVE YOUR RECIPES IF THESE ARE NOT REGISTERED.
-            /*
-             * public static final ContentJS<Double> PRESSURE_IN = new ContentJS<>(NumberComponent.ANY_DOUBLE,
-             * CustomRecipeCapabilities.PRESSURE, false);
-             * public static final ContentJS<Double> PRESSURE_OUT = new ContentJS<>(NumberComponent.ANY_DOUBLE,
-             * CustomRecipeCapabilities.PRESSURE, true);
-             *
-             * @Override
-             * public void registerRecipeKeys(KJSRecipeKeyEvent event) {
-             * event.registerKey(CustomRecipeCapabilities.PRESSURE, Pair.of(PRESSURE_IN, PRESSURE_OUT));
-             * }
-             */
-        }
+    /*
+     * public static final ContentJS<Double> PRESSURE_IN = new ContentJS<>(NumberComponent.ANY_DOUBLE,
+     * CustomRecipeCapabilities.PRESSURE, false);
+     * public static final ContentJS<Double> PRESSURE_OUT = new ContentJS<>(NumberComponent.ANY_DOUBLE,
+     * CustomRecipeCapabilities.PRESSURE, true);
+     *
+     * @Override
+     * public void registerRecipeKeys(KJSRecipeKeyEvent event) {
+     * event.registerKey(CustomRecipeCapabilities.PRESSURE, Pair.of(PRESSURE_IN, PRESSURE_OUT));
+     * }
+     */
+}

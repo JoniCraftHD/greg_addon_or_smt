@@ -1,8 +1,10 @@
 package net.joni.luna.common.data.materials;
 
 import com.gregtechceu.gtceu.api.item.ComponentItem;
-import com.tterrag.registrate.util.entry.ItemEntry;
+
 import net.minecraft.world.item.Item;
+
+import com.tterrag.registrate.util.entry.ItemEntry;
 
 import static net.joni.luna.common.registry.LunaRegistration.REGISTRATE;
 
@@ -35,8 +37,5 @@ public class LunaItems {
             .lang("File Head Cast")
             .register();
 
-
-    public static void init() {
-    }
+    public static void init() {}
 }
-

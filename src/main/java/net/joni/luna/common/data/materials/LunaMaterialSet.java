@@ -15,6 +15,5 @@ public class LunaMaterialSet {
     public static final MaterialIconSet TEST = new MaterialIconSet("test", DULL);
     public static final MaterialIconType file_head = new MaterialIconType("file_head");
 
-
     public static void init() {}
 }

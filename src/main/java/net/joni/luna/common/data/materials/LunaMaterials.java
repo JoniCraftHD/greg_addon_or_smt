@@ -1,17 +1,14 @@
 package net.joni.luna.common.data.materials;
 
-import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.GTValues;
 import com.gregtechceu.gtceu.api.data.chemical.material.Material;
-import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialFlags;
 import com.gregtechceu.gtceu.api.data.chemical.material.info.MaterialIconSet;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty;
-import com.gregtechceu.gtceu.api.data.chemical.material.properties.PropertyKey;
 import com.gregtechceu.gtceu.api.data.chemical.material.properties.ToolProperty;
 import com.gregtechceu.gtceu.api.item.tool.GTToolType;
+
 import net.joni.luna.LunaCore;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static com.gregtechceu.gtceu.api.data.chemical.material.properties.BlastProperty.GasTier.MID;
 
@@ -86,7 +83,7 @@ public class LunaMaterials {
                 .formula("APNS")
                 .secondaryColor(593856)
                 .toolStats(new ToolProperty(12.0F, 7.0F, 3072, 6,
-                        new GTToolType[]{GTToolType.MINING_HAMMER}))
+                        new GTToolType[] { GTToolType.MINING_HAMMER }))
                 .iconSet(LunaMaterialSet.ALMOST_PURE_NEVONIAN_STEEL)
                 .buildAndRegister();
         PHOENIX_ENRICHED_TRITANIUM = new Material.Builder(
@@ -152,7 +149,8 @@ public class LunaMaterials {
                 .buildAndRegister();
         TEST_ALLOY = new Material.Builder(
                 LunaCore.id("test_alloy"))
-                .flags(MaterialFlags.GENERATE_PLATE, MaterialFlags.GENERATE_FRAME, MaterialFlags.GENERATE_FOIL, LunaMaterialFlags.GENERATE_FILE_HEAD)
+                .flags(MaterialFlags.GENERATE_PLATE, MaterialFlags.GENERATE_FRAME, MaterialFlags.GENERATE_FOIL,
+                        LunaMaterialFlags.GENERATE_FILE_HEAD)
                 .fluid()
                 .ore()
                 .ingot()
@@ -169,12 +167,7 @@ public class LunaMaterials {
                 .iconSet(MaterialIconSet.SHINY)
                 .element(LunaElements.AE).formula("Ae")
                 .buildAndRegister();
-
     }
 
-
-    public static void modifyMaterials() {
-    }
-
+    public static void modifyMaterials() {}
 }
-
