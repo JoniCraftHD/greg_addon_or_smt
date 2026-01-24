@@ -29,45 +29,55 @@ public class LunaMultiblocks {
             .rotationState(RotationState.NON_Y_AXIS)
             .recipeType(LunaRecipeTypes.RESONANCE_GEN)
             .recipeModifiers(GTRecipeModifiers.PARALLEL_HATCH, GTRecipeModifiers.OC_NON_PERFECT,
-                    LunaRecipeModifiers.WITHER_CHECK,
+                  LunaRecipeModifiers.RIFT_CHECK,
                   GTRecipeModifiers.BATCH_MODE)
             .generator(true)
             .regressWhenWaiting(false)
             .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
             .pattern(definition -> FactoryBlockPattern.start()
-                    .aisle("BCCDCCB", "BBBBBBB", "BEEEEEB", "BEEEEEB", "BEEEEEB", "BEEEEEB", "BCCCCCB")
-                    .aisle("CBBBBBC", "BFFFFFB", "EAAAAAE", "EAAAAAE", "EAAAAAE", "EAAAAAE", "CGGGGGC")
-                    .aisle("CBBBBBC", "BFHHHFB", "EAAAAAE", "EAAAAAE", "EAAAAAE", "EAAAAAE", "CGGGGGC")
-                    .aisle("CBBBBBC", "BFHHHFB", "EAAAAAE", "EAAAAAE", "EAAAAAE", "EAAAAAE", "CGGGGGC")
-                    .aisle("CBBBBBC", "BFHHHFB", "EAAAAAE", "EAAAAAE", "EAAAAAE", "EAAAAAE", "CGGGGGC")
-                    .aisle("CBBBBBC", "BFFFFFB", "EAAAAAE", "EAAAAAE", "EAAAAAE", "EAAAAAE", "CGGGGGC")
-                    .aisle("BCCCCCB", "BBBBBBB", "BEEEEEB", "BEEEEEB", "BEEEEEB", "BEEEEEB", "BCCCCCB")
+                    .aisle("BBBBB", "CCCCC", "CDDDC", "DDDDD", "DDDDD", "CDDDC", "CCCCC", "BBBBB")
+                    .aisle("BBBBB", "CEEEC", "DAAAD", "DAAAD", "DAAAD", "DFGFD", "CEEEC", "BBBBB")
+                    .aisle("BBBBB", "CEEEC", "DAAAD", "DAAAD", "DAAAD", "DGGGD", "CEEEC", "BBBBB")
+                    .aisle("BBBBB", "CEEEC", "DAAAD", "DAAAD", "DAAAD", "DFGFD", "CEEEC", "BBBBB")
+                    .aisle("BBHBB", "CCCCC", "CDDDC", "DDDDD", "DDDDD", "CDDDC", "CCCCC", "BBBBB")
+
                     .where("A", Predicates.any())
                     .where("B",
-                            Predicates.blocks(ForgeRegistries.BLOCKS
-                                    .getValue(ResourceLocation.parse("strangematter:resonite_tile")))
-                    .or(Predicates.abilities(PartAbility.MAINTENANCE).setExactLimit(1))
-                    .or(Predicates.abilities(PartAbility.PARALLEL_HATCH).setMaxGlobalLimited(1))
-                                    .or(Predicates.abilities((PartAbility.IMPORT_ITEMS) )).setMaxGlobalLimited(1)
-                    .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS)).setMaxGlobalLimited(1)
-                    .or(Predicates.blocks(GTMachines.ENERGY_OUTPUT_HATCH[GTValues.MV].get())).setMaxGlobalLimited(2))
+                            Predicates.blocks(ForgeRegistries.BLOCKS.getValue(ResourceLocation.parse("luna:resonite_casing")))
+
+                            .or(Predicates.abilities(PartAbility.MAINTENANCE)
+                                    .setExactLimit(1))
+
+                            .or(Predicates.abilities(PartAbility.PARALLEL_HATCH)
+                                    .setMaxGlobalLimited(1))
+
+                            .or(Predicates.abilities(PartAbility.IMPORT_ITEMS)
+                                    .setMaxGlobalLimited(1))
+
+                            .or(Predicates.abilities(PartAbility.IMPORT_FLUIDS)
+                                    .setMaxGlobalLimited(1))
+
+                    )
                     .where("C",
                             Predicates.blocks(ForgeRegistries.BLOCKS
-                                    .getValue(ResourceLocation.parse("strangematter:resonite_pillar"))))
-                    .where("D", Predicates.controller(Predicates.blocks(definition.get())))
+                                    .getValue(ResourceLocation.parse("gtceu:steel_turbine_casing")))
+                    .or(Predicates.blocks(GTMachines.ENERGY_OUTPUT_HATCH[GTValues.OpV].get())
+                            .setMaxGlobalLimited(2))
+                    )
+                    .where("H", Predicates.controller(Predicates.blocks(definition.get())))
 
                     .where("E",
                             Predicates.blocks(ForgeRegistries.BLOCKS
-                                    .getValue(ResourceLocation.parse("gtceu:tempered_glass"))))
+                                    .getValue(ResourceLocation.parse("gtceu:corrosion_proof_casing"))))
                     .where("F",
                             Predicates.blocks(ForgeRegistries.BLOCKS
-                                    .getValue(ResourceLocation.parse("gtceu:corrosion_proof_casing"))))
+                                    .getValue(ResourceLocation.parse("strangematter:shade_shard_lamp"))))
                     .where("G",
                             Predicates.blocks(ForgeRegistries.BLOCKS
-                                    .getValue(ResourceLocation.parse("strangematter:fancy_resonite_tile"))))
-                    .where("H",
+                                    .getValue(ResourceLocation.parse("gtceu:kanthal_coil_block"))))
+                    .where("D",
                             Predicates.blocks(ForgeRegistries.BLOCKS
-                                    .getValue(ResourceLocation.parse("gtceu:shock_proof_cutting_casing"))))
+                                    .getValue(ResourceLocation.parse("gtceu:tempered_glass"))))
 
                     .build())
 
@@ -77,7 +87,5 @@ public class LunaMultiblocks {
 
     public static void init(){}
 }
-
-
 
 
