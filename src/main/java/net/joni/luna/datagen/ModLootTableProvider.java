@@ -1,6 +1,6 @@
-package net.joni.luna.common.data.datagen;
+package net.joni.luna.datagen;
 
-import net.joni.luna.common.data.datagen.loot.ModBlockLootTables;
+import net.joni.luna.datagen.loot.ModBlockLootTables;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;

@@ -1,4 +1,4 @@
-package net.joni.luna.common.data.datagen;
+package net.joni.luna.datagen;
 
 import net.joni.luna.LunaCore;
 import net.joni.luna.common.data.materials.LunaBlocks;
@@ -6,7 +6,6 @@ import net.joni.luna.common.data.materials.LunaTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.checkerframework.checker.nullness.qual.Nullable;

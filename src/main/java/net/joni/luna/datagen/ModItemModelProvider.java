@@ -1,6 +1,6 @@
-package net.joni.luna.common.data.datagen;
+package net.joni.luna.datagen;
 
-import net.joni.luna.LunaCore; // Stelle sicher, dass der Pfad zu deiner Hauptklasse stimmt
+import net.joni.luna.LunaCore;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;

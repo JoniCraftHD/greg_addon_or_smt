@@ -1,4 +1,4 @@
-package net.joni.luna.common.data.datagen;
+package net.joni.luna.datagen;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.joni.luna.LunaCore;
