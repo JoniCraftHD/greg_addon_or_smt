@@ -1,0 +1,11 @@
+{
+  "type": "star",
+  "name": "Amenthar",
+  "color": "#9fd6ff",
+  "size": 1.4,
+  "temperature": 9000,
+  "planets": [
+    "abydos",
+    "unitas"
+  ]
+}

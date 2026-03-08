@@ -1,0 +1,11 @@
+{
+  "dimension": "sgjourney:abydos",
+  "gravity": 9.807,
+  "orbit": "sgjourney:abydos_orbit",
+  "oxygen": false,
+  "solar_power": 16,
+  "solar_system": "ad_astra:amenthara",
+  "temperature": 100,
+  "tier": 1,
+  "additional_launch_dimensions": []
+}

@@ -4,31 +4,31 @@ license = "LGPLv3.0"
 issueTrackerURL = "https://github.com/JoniCraftHD/luna/issues"
 
 [[mods]]
-modId = "luna"
+modId = "gtsia"
 version = "0.1.0"
-displayName = "Mission Luna"
+displayName = "GT: Stuck in Abyss"
 displayURL = ""
 logoFile = "icon.png"
 authors = "JoniCraftHD"
 description = '''
-Mission Luna - A GregTech CEu Addon
+GT: Stuck in Abyss - A GregTech CEu Core Mod
 '''
 
-[[dependencies.luna]]
+[[dependencies.gtsia]]
 modId = "forge"
 mandatory = true
 versionRange = "[47,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.luna]]
+[[dependencies.gtsia]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1,1.21)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.luna]]
+[[dependencies.gtsia]]
 modId = "gtceu"
 mandatory = true
 versionRange = "[1.0,)"

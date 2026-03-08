@@ -66,23 +66,20 @@ repositories {
     maven {
         url = "https://thedarkcolour.github.io/KotlinForForge/"
     }
+
+
+
+
+
     maven {
-        //Tinkers
-        name 'DVS1 Maven FS'
-        url 'https://dvs1.progwml6.com/files/maven'
-    }
-    maven {
-        name = 'GeckoLib'
-        url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        name 'Modrinth'
+        url 'https://api.modrinth.com/maven'
         content {
-            includeGroupByRegex("software\\.bernie.*")
-            includeGroup("com.eliotlash.mclib")
+            includeGroup 'maven.modrinth'
         }
     }
 
-    maven {
-        url "https://maven.teamresourceful.com/repository/maven-public/"
-    }
+
 
 
 
@@ -146,11 +143,13 @@ repositories {
             }
         }
     }
-    jar {
-        manifest.attributes([
-                "MixinConfigs": "luna.mixins.json"
+jar {
+    manifest {
+        attributes([
+                "MixinConfigs": "gtsia.mixins.json"
         ])
     }
+}
 
     apply from: "$rootDir/gradle/scripts/spotless.gradle"
 
@@ -173,31 +172,19 @@ repositories {
         modImplementation("com.lowdragmc.ldlib:ldlib-forge-${minecraft_version}:${ldlib_version}") { transitive = false }
         modImplementation("com.tterrag.registrate:Registrate:${registrate_version}")
         modImplementation("dev.toma.configuration:configuration-forge-${minecraft_version}:${configuration_version}")
-        //tinkers
-        modImplementation("curse.maven:tinkers-construct-74072:7419961")
-        modImplementation("curse.maven:mantle-74924:7414488")
-        //geckolib
-        modImplementation("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
-        //idk forgor
-        modImplementation("com.eliotlash.mclib:mclib:20")
-        //strange matter
-        modImplementation("curse.maven:strange-matter-1344073:7342906")
-        // Ad Astra Core
-        modImplementation("earth.terrarium.adastra:ad_astra-forge-1.20.1:1.15.5")
 
-        // ad astra and libaries
-        modImplementation("com.teamresourceful.resourcefullib:resourcefullib-forge-1.20.1:2.1.24")
-        modImplementation("earth.terrarium.adastra:ad_astra-forge-${minecraft_version}:${ad_astra_version}")
-        modImplementation("com.teamresourceful.resourcefulconfig:resourcefulconfig-forge-1.20.1:2.1.2")
-        //tfc
-        modImplementation("curse.maven:terrafirmacraft-302973:7442504")
+        modImplementation("curse.maven:sgjourney-689083:7173638")
 
+        modImplementation("curse.maven:ad-astra-635042:6262032") { transitive = false }
+        modImplementation("curse.maven:botarium-704113:5486070") { transitive = false }
+        modImplementation("curse.maven:resourceful-lib-570073:5659871") { transitive = false }
+        modImplementation("curse.maven:resourceful-config-714059:6231176") { transitive = false }
 
         // lombok
         compileOnly 'org.projectlombok:lombok:1.18.24'
         annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    }
 
+    }
 // See com.example.examplemod.mixin.DummyMixin for information about mixins
     mixin {
         add sourceSets.main, "mixins.${mod_id}.refmap.json"
@@ -233,3 +220,4 @@ repositories {
         options.release.set(17)
         options.compilerArgs << "-Aquiet=true" // Suppress mixin notes
     }
+
