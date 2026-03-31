@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "sgjourney:abydos_desert",
+    "sgjourney:abydos_spires",
+    "sgjourney:abydos_oasis"
+  ],
+  "features": "gtsia:abydos_cactus",
+  "step": "vegetal_decoration"
+}
